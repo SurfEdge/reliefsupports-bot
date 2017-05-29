@@ -1,0 +1,35 @@
+# SurfEdge 2017
+# This is the Backend service for the Messenger Bot 
+# https://m.me/ReliefSupport
+
+service: relief-bot 
+
+provider:
+  name: aws
+  runtime: nodejs4.3
+
+functions:
+  new:
+    handler: handler.new
+    events:
+     - http:
+          path: new
+          method: post
+          cors: true
+  needs:
+    handler: handler.newneeds
+    events:
+     - http:
+          path: needs
+          method: post
+          cors: true
+  view:
+    handler: handler.view
+    events:
+     - http:
+          path: view
+          method: post
+          cors: true
+
+plugins:
+  - serverless-offline
